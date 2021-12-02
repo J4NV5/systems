@@ -13,7 +13,7 @@ in
   users.groups.media.members = [ "janus" ];
   users.users.janus = {
     uid = 1000;
-    passwordFile = "/run/secrets/janus";
+    passwordFile = "/run/agenix/janus";
     description = name;
     shell = pkgs.zsh;
     isNormalUser = true;
@@ -32,12 +32,7 @@ in
       };
     };
   };
-  # services.protonvpn = {
-  #   enable = true;
-  #   authentication.username = "john";
-  #   authentication.password = "galt";
-  #   server = "us-free-01.protonvpn.com";
-  # };
+
   home-manager.users.janus = { suites, lib, nur, ... }: {
     imports = suites.graphics;
     home = {
@@ -74,7 +69,7 @@ in
         matchBlocks = {
           "darkfi.dev" = {
             host = "${config.networking.hostName}";
-            identityFile = "/run/secrets/salusa";
+            identityFile = "/run/agenix/salusa";
             extraOptions = { AddKeysToAgent = "yes"; };
           };
         };
