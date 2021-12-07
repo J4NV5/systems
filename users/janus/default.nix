@@ -32,7 +32,23 @@ in
       };
     };
   };
-
+  # services.openvpn.servers = let
+  #   config = pkgs.substituteAll {
+  #     src = ./private/floki/floki.ovpn;
+  #     name = "config";
+  #     key = ./private/floki/floki.key;
+  #     pkcs12 = ./private/floki/floki.p12;
+  #   };
+  # in
+  #   {
+  #     officeVPN  = {
+  #       config = '' ${builtins.readFile config} '';
+  #       authUserPass = {
+  #         username = "${builtins.readFile ./private/floki/user}";
+  #         password = "${builtins.readFile ./private/floki/pass}";
+  #       };
+  #     };
+  #   };
   home-manager.users.janus = { suites, lib, nur, ... }: {
     imports = suites.graphics;
     home = {
